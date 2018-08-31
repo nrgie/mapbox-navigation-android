@@ -20,4 +20,12 @@ public abstract class NavigationUiOptions {
   public abstract boolean shouldSimulateRoute();
 
   public abstract boolean waynameChipEnabled();
+
+  public abstract boolean showFeedbackFab();
+
+  public abstract boolean showSoundFab();
+
+  public abstract boolean showProblemAlertView();
+
+  public abstract boolean showFeedbackSubmittedAlertView();
 }

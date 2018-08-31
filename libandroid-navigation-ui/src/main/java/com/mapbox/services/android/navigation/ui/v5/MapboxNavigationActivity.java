@@ -130,6 +130,14 @@ public class MapboxNavigationActivity extends AppCompatActivity implements OnNav
       .getBoolean(NavigationConstants.NAVIGATION_VIEW_SIMULATE_ROUTE, false));
     options.directionsProfile(preferences
       .getString(NavigationConstants.NAVIGATION_VIEW_ROUTE_PROFILE_KEY, DirectionsCriteria.PROFILE_DRIVING_TRAFFIC));
+    options.showFeedbackFab(preferences
+      .getBoolean(NavigationConstants.NAVIGATION_VIEW_SHOW_FEEDBACK_FAB, true));
+    options.showSoundFab(preferences
+      .getBoolean(NavigationConstants.NAVIGATION_VIEW_SHOW_SOUND_FAB, true));
+    options.showProblemAlertView(preferences
+      .getBoolean(NavigationConstants.NAVIGATION_VIEW_SHOW_PROBLEM_ALERT_VIEW, true));
+    options.showFeedbackSubmittedAlertView(preferences
+      .getBoolean(NavigationConstants.NAVIGATION_VIEW_SHOW_FEEDBACK_SUBMITTED_ALERT_VIEW,true));
     navigationOptions.enableOffRouteDetection(preferences
       .getBoolean(NavigationConstants.NAVIGATION_VIEW_OFF_ROUTE_ENABLED_KEY, true));
     navigationOptions.snapToRoute(preferences

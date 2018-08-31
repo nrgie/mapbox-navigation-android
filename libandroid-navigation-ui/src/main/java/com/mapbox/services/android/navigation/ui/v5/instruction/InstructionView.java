@@ -113,6 +113,12 @@ public class InstructionView extends RelativeLayout implements FeedbackBottomShe
   private String unitType = "";
   private boolean isMuted;
   private boolean isRerouting;
+  private boolean showFeedbackFab;
+  private boolean showSoundFab;
+  private boolean showProblemAlertView;
+  private boolean showFeedbackSubmittedAlertView;
+  private ConstraintLayout soundLayout;
+  private ConstraintLayout feedbackLayout;
 
   public InstructionView(Context context) {
     this(context, null);
@@ -164,7 +170,10 @@ public class InstructionView extends RelativeLayout implements FeedbackBottomShe
   @Override
   public void onFeedbackSelected(FeedbackItem feedbackItem) {
     navigationViewModel.updateFeedback(feedbackItem);
-    alertView.show(NavigationConstants.FEEDBACK_SUBMITTED, 3000, false);
+
+    if (showFeedbackSubmittedAlertView) {
+      alertView.show(NavigationConstants.FEEDBACK_SUBMITTED, 3000, false);
+    }
   }
 
   @Override
@@ -362,6 +371,22 @@ public class InstructionView extends RelativeLayout implements FeedbackBottomShe
   }
 
   /**
+   * Sets up the fields which track which views should be hidden according to developer specifications
+   *
+   * @param showFeedbackFab whether to show the feedback fab
+   * @param showSoundFab whether to show the sound fab
+   * @param showProblemAlertView whether to show the problem alert view
+   * @param showFeedbackSubmittedAlertView whether to show the feedback submitted alert view
+   */
+  public void setupHiddenViews(boolean showFeedbackFab, boolean showSoundFab, boolean showProblemAlertView,
+                               boolean showFeedbackSubmittedAlertView) {
+    this.showFeedbackFab = showFeedbackFab;
+    this.showSoundFab = showSoundFab;
+    this.showProblemAlertView = showProblemAlertView;
+    this.showFeedbackSubmittedAlertView = showFeedbackSubmittedAlertView;
+  }
+
+  /**
    * Inflates this layout needed for this view and initializes the locale as the device locale.
    */
   private void initialize() {
@@ -394,6 +419,8 @@ public class InstructionView extends RelativeLayout implements FeedbackBottomShe
     instructionLayoutText = findViewById(R.id.instructionLayoutText);
     instructionListLayout = findViewById(R.id.instructionListLayout);
     rvInstructions = findViewById(R.id.rvInstructions);
+    soundLayout = findViewById(R.id.soundLayout);
+    feedbackLayout = findViewById(R.id.feedbackLayout);
     initializeInstructionAutoSize();
   }
 
@@ -503,6 +530,10 @@ public class InstructionView extends RelativeLayout implements FeedbackBottomShe
    * Show AlertView with "Report Problem" text for 10 seconds - after waiting 2 seconds.
    */
   private void showAlertView() {
+    if (!showProblemAlertView) {
+      return;
+    }
+
     final Handler handler = new Handler();
     handler.postDelayed(new Runnable() {
       @Override
@@ -596,19 +627,35 @@ public class InstructionView extends RelativeLayout implements FeedbackBottomShe
         alertView.hide();
       }
     });
-    soundFab.setVisibility(VISIBLE);
-    soundFab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        navigationViewModel.setMuted(toggleMute());
-      }
-    });
+
+    if (showSoundFab) {
+      setupSoundFab();
+    }
+
+    if (showFeedbackFab) {
+      setupFeedbackFab();
+    }
+  }
+
+  private void setupFeedbackFab() {
+    feedbackLayout.setVisibility(VISIBLE);
     feedbackFab.setVisibility(VISIBLE);
     feedbackFab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         navigationViewModel.recordFeedback(FeedbackEvent.FEEDBACK_SOURCE_UI);
         showFeedbackBottomSheet();
+      }
+    });
+  }
+
+  private void setupSoundFab() {
+    soundLayout.setVisibility(VISIBLE);
+    soundFab.setVisibility(VISIBLE);
+    soundFab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        navigationViewModel.setMuted(toggleMute());
       }
     });
   }

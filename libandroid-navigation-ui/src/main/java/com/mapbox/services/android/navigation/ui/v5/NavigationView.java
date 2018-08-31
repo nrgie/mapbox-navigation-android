@@ -539,6 +539,12 @@ public class NavigationView extends CoordinatorLayout implements LifecycleObserv
     establishLanguage(localeUtils, options);
     establishUnitType(localeUtils, options);
     establishTimeFormat(options);
+    setupInstructionView(options);
+  }
+
+  private void setupInstructionView(NavigationViewOptions options) {
+    instructionView.setupHiddenViews(options.showFeedbackFab(), options.showSoundFab(), options.showProblemAlertView(),
+      options.showFeedbackSubmittedAlertView());
   }
 
   private void establishLanguage(LocaleUtils localeUtils, NavigationViewOptions options) {

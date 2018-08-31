@@ -62,6 +62,7 @@
         layout="@layout/sound_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_alignParentEnd="true"
@@ -73,8 +74,10 @@
         layout="@layout/feedback_button_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/soundLayout"/>
+        android:layout_below="@id/soundLayout"
+        android:layout_alignWithParentIfMissing="true"/>
 
 </RelativeLayout>

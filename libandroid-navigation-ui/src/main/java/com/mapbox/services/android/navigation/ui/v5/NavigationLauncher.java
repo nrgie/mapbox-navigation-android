@@ -72,6 +72,11 @@ public class NavigationLauncher {
     editor.putString(NavigationConstants.NAVIGATION_VIEW_ROUTE_PROFILE_KEY, options.directionsProfile());
     editor.putBoolean(NavigationConstants.NAVIGATION_VIEW_OFF_ROUTE_ENABLED_KEY, options.enableOffRouteDetection());
     editor.putBoolean(NavigationConstants.NAVIGATION_VIEW_SNAP_ENABLED_KEY, options.snapToRoute());
+    editor.putBoolean(NavigationConstants.NAVIGATION_VIEW_SHOW_FEEDBACK_FAB, options.showFeedbackFab());
+    editor.putBoolean(NavigationConstants.NAVIGATION_VIEW_SHOW_SOUND_FAB, options.showSoundFab());
+    editor.putBoolean(NavigationConstants.NAVIGATION_VIEW_SHOW_PROBLEM_ALERT_VIEW, options.showProblemAlertView());
+    editor.putBoolean(
+      NavigationConstants.NAVIGATION_VIEW_SHOW_FEEDBACK_SUBMITTED_ALERT_VIEW, options.showFeedbackSubmittedAlertView());
   }
 
   private static void storeThemePreferences(NavigationLauncherOptions options, SharedPreferences.Editor editor) {

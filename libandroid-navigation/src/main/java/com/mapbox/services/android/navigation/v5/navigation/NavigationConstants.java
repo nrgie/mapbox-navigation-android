@@ -209,6 +209,11 @@ public final class NavigationConstants {
   public static final String NAVIGATION_VIEW_ROUTE_PROFILE_KEY = "navigation_view_route_profile";
   public static final String NAVIGATION_VIEW_OFF_ROUTE_ENABLED_KEY = "navigation_view_off_route_enabled";
   public static final String NAVIGATION_VIEW_SNAP_ENABLED_KEY = "navigation_view_snap_enabled";
+  public static final String NAVIGATION_VIEW_SHOW_SOUND_FAB = "navigation_view_show_sound_fab";
+  public static final String NAVIGATION_VIEW_SHOW_FEEDBACK_FAB = "navigation_view_show_feedback_fab";
+  public static final String NAVIGATION_VIEW_SHOW_PROBLEM_ALERT_VIEW = "navigation_view_show_problem_alert_view";
+  public static final String
+    NAVIGATION_VIEW_SHOW_FEEDBACK_SUBMITTED_ALERT_VIEW = "navigation_view_show_feedback_submitted_alert_view";
 
   // Step Maneuver Types
   public static final String STEP_MANEUVER_TYPE_TURN = "turn";

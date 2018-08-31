@@ -26,6 +26,14 @@ public abstract class NavigationLauncherOptions extends NavigationUiOptions {
 
     public abstract Builder waynameChipEnabled(boolean waynameChipEnabled);
 
+    public abstract Builder showFeedbackFab(boolean showFeedbackFab);
+
+    public abstract Builder showSoundFab(boolean showSoundFab);
+
+    public abstract Builder showProblemAlertView(boolean showProblemAlertView);
+
+    public abstract Builder showFeedbackSubmittedAlertView(boolean showFeedbackSubmittedAlertView);
+
     public abstract Builder enableOffRouteDetection(boolean enableOffRouteDetection);
 
     public abstract Builder snapToRoute(boolean snapToRoute);
@@ -38,6 +46,10 @@ public abstract class NavigationLauncherOptions extends NavigationUiOptions {
       .shouldSimulateRoute(false)
       .enableOffRouteDetection(true)
       .snapToRoute(true)
-      .waynameChipEnabled(true);
+      .waynameChipEnabled(true)
+      .showFeedbackFab(true)
+      .showSoundFab(true)
+      .showProblemAlertView(true)
+      .showFeedbackSubmittedAlertView(true);
   }
 }
